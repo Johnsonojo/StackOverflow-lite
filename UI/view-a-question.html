@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <title>StackOverflow-lite</title>
+</head>
+
+<body class="other-body">
+    <div class="header homepage">
+        <div class="navbar unauth-navbar">
+            <div class="page-title">
+                <h3>
+                    <a href="home.html">StackOverflow-lite</a>
+                </h3>
+            </div>
+            <div class="navlinks">
+                <div>
+                    <input class="search-input" type="search" name="search" placeholder="Search for question">
+                    <button class="btn-search">Search</button>
+                </div>
+                <a href="dashboard.html" class="link">Dashboard</a>
+                <a href="login.html" class="link">Logout</a>
+            </div>
+        </div>
+    </div>
+    <div class="other-side-nav">
+        <ul>
+            <div class="user-thumbnail">
+                <img src="./assets/img/Avatar.png" alt="" srcset="">
+                <div>
+                    <h5>Username</h5>
+                </div>
+                <!-- <hr> -->
+            </div>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="ask-question.html">Ask Question</a></li>
+        </ul>
+    </div>
+    <div class="question-details">
+        <div>
+            <div class="view-title">
+                <h3>Question Details</h3>
+            </div>
+            <div>
+                <h2>How do I add styles to an h2 tag in css?</h2>
+                <div>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <p>Sed fugiat repudiandae consequuntur laboriosam ratione, excepturi consectetur </p>
+                    <p>assumenda eaque praesentium recusandae!</p>
+                </div>
+            </div>
+            <hr>
+        </div>
+
+        <div>
+            <div>
+                <h3>1 Answer</h3>
+            </div>
+            <!-- First Answer -->
+            <div>
+                <div>
+                    <a href="#voteup" title="helpful answer"><img src="./assets/img/up.png" alt=""> </a>
+                    <span>30</span>
+                    <a href="#votedown" title="unhelpful answer"><img src="./assets/img/down.png" alt=""> </a>
+                </div>
+                <div>
+                    <a href="#accepted" title="This answer was accepted"><img src="./assets/img/Right.png" alt=""> </a>
+                </div>
+            </div>
+            <div>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <p>Sed fugiat repudiandae consequuntur laboriosam ratione, excepturi consectetur </p>
+                <p>assumenda eaque praesentium recusandae!</p>
+            </div>
+            <div class="wrap-collabsible">
+                <input id="collapsible" class="toggle" type="checkbox">
+                <label for="collapsible" class="lbl-toggle"> Add Comment</label>
+                <div class="collapsible-content">
+                    <div class="content-inner">
+                        <div>
+                            <textarea name="" id="" cols="50" rows="10"></textarea>
+                        </div>
+                        <div>
+                            <button class="submit-btn">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Second Answer -->
+            <!-- <div>
+                <div>
+                    <a href="#voteup" title="helpful answer"><img src="./assets/img/up.png" alt=""> </a>
+                    <span>50</span>
+                    <a href="#votedown" title="unhelpful answer"><img src="./assets/img/down.png" alt=""> </a>
+                </div>
+                <div>
+                    <a href="#accepted" title="This answer was accepted"><img src="./assets/img/Right.png" alt=""> </a>
+                </div>
+            </div>
+            <div>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <p>Sed fugiat repudiandae consequuntur laboriosam ratione, excepturi consectetur </p>
+                <p>assumenda eaque praesentium recusandae!</p>
+            </div>
+            <div class="wrap-collabsible">
+                <input id="collapsible" class="toggle" type="checkbox">
+                <label for="collapsible" class="lbl-toggle1"> Add Comment</label>
+                <div class="collapsible-content">
+                    <div class="content-inner">
+                        <div>
+                            <textarea name="" id="" cols="50" rows="10"></textarea>
+                        </div>
+                        <div>
+                            <button class="submit-btn">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <hr>
+            <div>
+                <h3>Add Answer</h3>
+            </div>
+            <div>
+                <textarea name="" id="" cols="50" rows="10"></textarea>
+            </div>
+            <button class="post-btn">Post Answer</button>
+        </div>
+    </div>
+
+    <div class="footer-others">
+        <p>&copy; 2018. Johnson Ojo. All images from Google.</p>
+    </div>
+    <script src="./assets/js/main.js"></script>
+</body>
+
+</html>
