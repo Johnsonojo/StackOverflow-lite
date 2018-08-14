@@ -9,4 +9,6 @@ const questionRouter = express.Router();
 
 questionRouter.get('/', questionClassController.getAllQuestions)
 
+questionRouter.get('/:questionId', questionClassController.getOneQuestion)
+
 export default questionRouter;

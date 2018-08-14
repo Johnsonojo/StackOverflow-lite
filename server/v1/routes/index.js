@@ -9,6 +9,6 @@ const router = express.Router();
 
 
 // creating api for question class
-router.use('/api/v1/users/questions', question);
+router.use('/api/v1/questions', question);
 
 export default router;
