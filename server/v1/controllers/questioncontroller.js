@@ -25,4 +25,27 @@ export default class Question {
         });
     }
 
+    // Creating a new question
+    static addNewQuestion(req, res) {
+        // check parameters to create a question
+        if (!req.body.title || !req.body.body) {
+            return res.json({
+                status: 'error',
+                message: 'Please fill all field',
+            });
+        }
+
+        const newquestion = {
+            id: questionDatabase.questions.length + 1,
+            title: req.body.title,
+            body: req.body.body,
+            answer: [],
+        };
+        questionDatabase.questions.push(newquestion);
+        return res.status(200).json({
+            message: 'New question was created',
+            Error: false,
+            output: questionDatabase.questions[questionDatabase.questions.length - 1],
+        });
+    }
 }

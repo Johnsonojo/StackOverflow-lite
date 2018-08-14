@@ -11,4 +11,7 @@ questionRouter.get('/', questionClassController.getAllQuestions)
 
 questionRouter.get('/:questionId', questionClassController.getOneQuestion)
 
+questionRouter.post('/', questionClassController.addNewQuestion)
+
+
 export default questionRouter;
