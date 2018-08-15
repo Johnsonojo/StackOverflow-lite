@@ -39,7 +39,7 @@ export default class Question {
             id: questionDatabase.questions.length + 1,
             title: req.body.title,
             body: req.body.body,
-            answer: [],
+            answers: [],
         };
         questionDatabase.questions.push(newquestion);
         return res.status(200).json({
@@ -48,4 +48,7 @@ export default class Question {
             output: questionDatabase.questions[questionDatabase.questions.length - 1],
         });
     }
+
+
+
 }
