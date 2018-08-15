@@ -68,4 +68,33 @@ export default class Question {
         });
     }
 
+    // Edit a question
+    static editOneQuestion(req, res) {
+        // check the validity of the input
+        if (!req.body.title || !req.body.body) {
+            return res.json({
+                message: 'Please supply title and body of the question',
+                Error: true,
+            });
+        }
+
+        // update the question using question id
+        questionDatabase.questions.forEach((value) => {
+            if (value.id === parseInt(req.params.questionId, 10)) {
+                questionDatabase.questions[req.params.questionId].title = req.body.title;
+                questionDatabase.questions[req.params.questionId].body = req.body.body;
+                return res.status(200).json({
+                    Message: `Question ${value.id} updated`,
+                    error: false,
+                    question: questionDatabase.questions[req.params.questionId],
+                });
+            }
+        });
+        return res.status(409).json({
+            status: 'Question not found',
+            error: true,
+        });
+    }
+
+
 }
