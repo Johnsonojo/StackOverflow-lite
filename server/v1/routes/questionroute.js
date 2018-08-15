@@ -13,5 +13,7 @@ questionRouter.get('/:questionId', questionClassController.getOneQuestion)
 
 questionRouter.post('/', questionClassController.addNewQuestion)
 
+questionRouter.delete('/:questionId', questionClassController.deleteOneQuestion)
+
 
 export default questionRouter;

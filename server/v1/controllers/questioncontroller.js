@@ -49,6 +49,23 @@ export default class Question {
         });
     }
 
+    // Deleting a question
+    static deleteOneQuestion(req, res) {
+        questionDatabase.questions.forEach((value) => {
+            if (value.id === parseInt(req.params.questionId, 10)) {
+                questionDatabase.questions.splice(value.id, 1);
+                res.status(200).json({
+                    Message: 'Question deleted',
+                    Error: false,
+                    deleteOutput: value,
+                });
+            }
+        });
 
+        res.status(404).json({
+            Message: 'Question id not found',
+            Error: true,
+        });
+    }
 
 }
