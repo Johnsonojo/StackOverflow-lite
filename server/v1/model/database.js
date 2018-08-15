@@ -31,7 +31,7 @@ const database = {
         body: 'css is an acronym that stands for cascading style sheet',
         answers: [{
             id: 0,
-            userid: 0,
+            // userid: 0,
             body: 'lorem hjkfdlmjnh hihdklsmd jjoukufjguhg cgiugfiuwnhdiy',
             comment: [{
                 id: 0,
@@ -63,7 +63,7 @@ const database = {
         body: 'HTML is an acronym that stands for HyperText Markup Language',
         answers: [{
             id: 0,
-            userid: 0,
+            // userid: 0,
             body: 'lorem hjkfdlmjnh hihdklsmd jjoukufjguhg cgiugfiuwnhdiy',
             comment: [{
                 id: 0,
@@ -97,7 +97,7 @@ const database = {
         body: 'JS is an acronym that stands for JavaScript',
         answers: [{
             id: 0,
-            userid: 0,
+            // userid: 0,
             body: 'lorem hjkfdlmjnh hihdklsmd jjoukufjguhg cgiugfiuwnhdiy',
             comment: [{
                 id: 0,
