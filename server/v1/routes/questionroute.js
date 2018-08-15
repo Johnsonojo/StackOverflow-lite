@@ -15,5 +15,6 @@ questionRouter.post('/', questionClassController.addNewQuestion)
 
 questionRouter.delete('/:questionId', questionClassController.deleteOneQuestion)
 
+questionRouter.put('/:questionId', questionClassController.editOneQuestion)
 
 export default questionRouter;
