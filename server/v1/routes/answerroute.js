@@ -9,5 +9,7 @@ const answerRouter = express.Router();
 
 answerRouter.post('/:questionId/answers', answerClassController.postAnswer)
 
+answerRouter.get('/:questionId/answers', answerClassController.getAllAnswersToAQuestion)
+
 
 export default answerRouter;

@@ -32,5 +32,23 @@ export default class Answer {
         });
     }
 
+    static getAllAnswersToAQuestion(req, res) {
+        const { questionId } = req.params;
+        questionDatabase.questions.forEach((value) => {
+            if (value.id === parseInt(questionId, 10)) {
+                return res.status(200).json({
+                    result: value.answers,
+                    message: 'success',
+                    error: false,
+                });
+            }
+        });
+        return res.status(404).json({
+            status: 'error',
+            message: 'question not found',
+        });
+
+    }
+
 
 }
