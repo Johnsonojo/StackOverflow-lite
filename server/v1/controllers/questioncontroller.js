@@ -10,7 +10,7 @@ export default class Question {
     // get a question
     static getOneQuestion(req, res) {
         const { questionId } = req.params;
-        questionDatabase.questions.forEach((value) => {
+        questionDatabase.questions.map((value) => {
             if (value.id === parseInt(questionId, 10)) {
                 return res.status(200).json({
                     value,
@@ -51,7 +51,7 @@ export default class Question {
 
     // Deleting a question
     static deleteOneQuestion(req, res) {
-        questionDatabase.questions.forEach((value) => {
+        questionDatabase.questions.map((value) => {
             if (value.id === parseInt(req.params.questionId, 10)) {
                 questionDatabase.questions.splice(value.id, 1);
                 res.status(200).json({
@@ -79,7 +79,7 @@ export default class Question {
         }
 
         // update the question using question id
-        questionDatabase.questions.forEach((value) => {
+        questionDatabase.questions.map((value) => {
             if (value.id === parseInt(req.params.questionId, 10)) {
                 questionDatabase.questions[req.params.questionId].title = req.body.title;
                 questionDatabase.questions[req.params.questionId].body = req.body.body;
