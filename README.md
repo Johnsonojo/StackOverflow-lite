@@ -1,3 +1,12 @@
+[![Coverage Status](https://coveralls.io/repos/github/Johnsonojo/StackOverflow-lite/badge.svg?branch=develop)](https://coveralls.io/github/Johnsonojo/StackOverflow-lite?branch=develop)
+
+[![Build Status](https://travis-ci.org/Johnsonojo/StackOverflow-lite.svg?branch=develop)](https://travis-ci.org/Johnsonojo/StackOverflow-lite)
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/fe369cdd7559a80aced8/maintainability)](https://codeclimate.com/github/Johnsonojo/StackOverflow-lite/maintainability)
+
+[![Test Coverage](https://api.codeclimate.com/v1/badges/fe369cdd7559a80aced8/test_coverage)](https://codeclimate.com/github/Johnsonojo/StackOverflow-lite/test_coverage)
+
+
 # StackOverflow-lite
 StackOverflow-lite is a platform where people can ask questions and provide answers.
 

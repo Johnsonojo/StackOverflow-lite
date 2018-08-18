@@ -7,14 +7,14 @@ import questionClassController from '../controllers/questioncontroller';
 // importing router for questions
 const questionRouter = express.Router();
 
-questionRouter.get('/', questionClassController.getAllQuestions)
+questionRouter.get('/', questionClassController.getAllQuestions);
 
-questionRouter.get('/:questionId', questionClassController.getOneQuestion)
+questionRouter.get('/:questionId', questionClassController.getOneQuestion);
 
-questionRouter.post('/', questionClassController.addNewQuestion)
+questionRouter.post('/', questionClassController.addNewQuestion);
 
-questionRouter.delete('/:questionId', questionClassController.deleteOneQuestion)
+questionRouter.delete('/:questionId', questionClassController.deleteOneQuestion);
 
-questionRouter.put('/:questionId', questionClassController.editOneQuestion)
+questionRouter.put('/:questionId', questionClassController.editOneQuestion);
 
 export default questionRouter;

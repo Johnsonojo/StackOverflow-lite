@@ -29,7 +29,7 @@ export default class Question {
     static addNewQuestion(req, res) {
         // check parameters to create a question
         if (!req.body.title || !req.body.body) {
-            return res.json({
+            return res.status(400).json({
                 status: 'error',
                 message: 'Please fill all field',
             });
@@ -81,16 +81,16 @@ export default class Question {
         // update the question using question id
         questionDatabase.questions.map((value) => {
             if (value.id === parseInt(req.params.questionId, 10)) {
-                questionDatabase.questions[req.params.questionId].title = req.body.title;
-                questionDatabase.questions[req.params.questionId].body = req.body.body;
+                questionDatabase.questions[req.params.questionId - 1].title = req.body.title;
+                questionDatabase.questions[req.params.questionId - 1].body = req.body.body;
                 return res.status(200).json({
                     Message: `Question ${value.id} updated`,
                     error: false,
-                    question: questionDatabase.questions[req.params.questionId],
+                    question: questionDatabase.questions[req.params.questionId - 1],
                 });
             }
         });
-        return res.status(409).json({
+        return res.status(404).json({
             status: 'Question not found',
             error: true,
         });

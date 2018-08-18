@@ -4,8 +4,10 @@
     "description": "StackOverflow-lite is a platform where people can ask questions and provide answers.",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "babel-watch server/app.js"
+        "start": "babel-watch server/app.js",
+        "coverage": "nyc report --reporter=text-lcov | coveralls",
+        "test:dev": "mocha --compilers js:babel-core/register --require babel-polyfill --recursive server/tests/ --timeout 15000 --exit",
+        "test": "nyc --reporter=html --reporter=text mocha --compilers js:babel-core/register --require babel-polyfill --recursive server/tests/ --timeout 15000 --exit"
     },
     "repository": {
         "type": "git",
@@ -20,6 +22,8 @@
     "homepage": "https://github.com/Johnsonojo/StackOverflow-lite#readme",
     "devDependencies": {
         "babel-cli": "^6.26.0",
+        "babel-core": "^6.26.3",
+        "babel-polyfill": "^6.26.0",
         "babel-preset-env": "^1.7.0",
         "eslint-config-airbnb-base": "^13.1.0"
     },

@@ -28,7 +28,6 @@ export default class Comment {
                     }
                 });
             }
-
         });
         return res.status(404).json({
             status: 'error',
