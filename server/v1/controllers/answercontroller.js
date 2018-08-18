@@ -2,9 +2,9 @@
 import questionDatabase from '../model/database';
 
 export default class Answer {
-    // Add an answer 
+    // Add an answer  
     static postAnswer(req, res) {
-        const { questionId } = req.params;
+        const { questionId, userId } = req.params;
         if (!req.body.body) {
             return res.json({
                 status: 'error',
@@ -15,7 +15,7 @@ export default class Answer {
             if (value.id === parseInt(questionId, 10)) {
                 value.answers.push({
                     id: value.answers.length + 1,
-                    // userid
+                    userId: req.body.userId,
                     body: req.body.body,
                     comment: [],
                 });

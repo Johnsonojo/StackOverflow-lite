@@ -30,30 +30,30 @@ const database = {
         title: 'what is css?',
         body: 'css is an acronym that stands for cascading style sheet',
         answers: [{
-            id: 0,
-            // userid: 0,
+            id: 1,
+            userId: 1,
             body: 'lorem hjkfdlmjnh hihdklsmd jjoukufjguhg cgiugfiuwnhdiy',
             comment: [{
                 id: 0,
-                userid: 0,
+                userId: 0,
                 body: 'lorem hjkfdlmjnh hihdklsmd jjoukufjguhg cgiugfiuwnhdiy',
             }, {
                 id: 1,
-                userid: 1,
+                userId: 1,
                 body: 'lorem hjkfdlmjnh hihdklsmd jjoukufjguhg cgiugfiuwnhdiy',
             }],
 
         }, {
-            id: 1,
-            userid: 1,
+            id: 2,
+            userId: 3,
             body: 'lorem hjkfdlmjnh hihdklsmd jjoukufjguhg cgiugfiuwnhdiy',
             comment: [{
                 id: 0,
-                userid: 0,
+                userId: 0,
                 body: 'lorem hjkfdlmjnh hihdklsmd jjoukufjguhg cgiugfiuwnhdiy',
             }, {
                 id: 1,
-                userid: 1,
+                userId: 1,
                 body: 'lorem hjkfdlmjnh hihdklsmd jjoukufjguhg cgiugfiuwnhdiy',
             }],
         }],
@@ -62,30 +62,30 @@ const database = {
         title: 'what is HTML?',
         body: 'HTML is an acronym that stands for HyperText Markup Language',
         answers: [{
-            id: 0,
-            // userid: 0,
+            id: 1,
+            userId: 0,
             body: 'lorem hjkfdlmjnh hihdklsmd jjoukufjguhg cgiugfiuwnhdiy',
             comment: [{
                 id: 0,
-                userid: 0,
+                userId: 0,
                 body: 'lorem hjkfdlmjnh hihdklsmd jjoukufjguhg cgiugfiuwnhdiy',
             }, {
                 id: 1,
-                userid: 1,
+                userId: 1,
                 body: 'lorem hjkfdlmjnh hihdklsmd jjoukufjguhg cgiugfiuwnhdiy',
             }],
 
         }, {
-            id: 1,
-            userid: 1,
+            id: 2,
+            userId: 1,
             body: 'lorem hjkfdlmjnh hihdklsmd jjoukufjguhg cgiugfiuwnhdiy',
             comment: [{
                 id: 0,
-                userid: 0,
+                userId: 0,
                 body: 'lorem hjkfdlmjnh hihdklsmd jjoukufjguhg cgiugfiuwnhdiy',
             }, {
                 id: 1,
-                userid: 1,
+                userId: 1,
                 body: 'lorem hjkfdlmjnh hihdklsmd jjoukufjguhg cgiugfiuwnhdiy',
             }],
 
@@ -96,30 +96,30 @@ const database = {
         title: 'what is JS?',
         body: 'JS is an acronym that stands for JavaScript',
         answers: [{
-            id: 0,
-            // userid: 0,
+            id: 1,
+            userId: 0,
             body: 'lorem hjkfdlmjnh hihdklsmd jjoukufjguhg cgiugfiuwnhdiy',
             comment: [{
                 id: 0,
-                userid: 0,
+                userId: 0,
                 body: 'lorem hjkfdlmjnh hihdklsmd jjoukufjguhg cgiugfiuwnhdiy',
             }, {
                 id: 1,
-                userid: 1,
+                userId: 1,
                 body: 'lorem hjkfdlmjnh hihdklsmd jjoukufjguhg cgiugfiuwnhdiy',
             }],
 
         }, {
-            id: 1,
-            userid: 1,
+            id: 2,
+            userId: 1,
             body: 'lorem hjkfdlmjnh hihdklsmd jjoukufjguhg cgiugfiuwnhdiy',
             comment: [{
                 id: 0,
-                userid: 0,
+                userId: 0,
                 body: 'lorem hjkfdlmjnh hihdklsmd jjoukufjguhg cgiugfiuwnhdiy',
             }, {
                 id: 1,
-                userid: 1,
+                userId: 1,
                 body: 'lorem hjkfdlmjnh hihdklsmd jjoukufjguhg cgiugfiuwnhdiy',
             }],
 
