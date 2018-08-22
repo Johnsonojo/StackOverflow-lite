@@ -2,7 +2,8 @@
 import express from 'express';
 
 // importing question controller
-import questionClassController from '../controllers/questioncontroller';
+import questionClassController from '../controllers/questionController';
+
 
 // importing router for questions
 const questionRouter = express.Router();
