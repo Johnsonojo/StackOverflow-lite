@@ -1,10 +1,10 @@
-import chaihhtp from 'chai-http';
+import chaiHttp from 'chai-http';
 import chai from 'chai';
 import server from '../app';
 
 const { expect } = chai;
 
-chai.use(chaihhtp);
+chai.use(chaiHttp);
 
 describe('Answers controller', () => {
     // test for adding an answer to a question
@@ -19,10 +19,11 @@ describe('Answers controller', () => {
             .post('/api/v1/questions/3/answers')
             .send(newAnswer)
             .end((err, res) => {
-                expect(res.body.result.id).to.be.eql(newAnswer.id);
-                expect(res.body.result.userId).to.be.eql(newAnswer.userId);
-                expect(res.body.result.body).to.be.eql(newAnswer.body);
-                expect(res.body.result.comment).to.be.eql(newAnswer.comment);
+                expect(res.body.data.id).to.be.eql(newAnswer.id);
+                expect(res.body.data.userId).to.be.eql(newAnswer.userId);
+                expect(res.body.data.body).to.be.eql(newAnswer.body);
+                expect(res.body.data.comment).to.be.eql(newAnswer.comment);
+                expect(res.body.message).to.be.a('string');
                 done(err);
             });
     });
@@ -32,7 +33,7 @@ describe('Answers controller', () => {
         chai.request(server)
             .get('/api/v1/questions/3/answers')
             .end((err, res) => {
-                expect(res.body.result.length).to.be.eql(3);
+                expect(res.body.data.length).to.be.eql(3);
                 done(err);
             });
     });

@@ -2,7 +2,7 @@
 import express from 'express';
 
 // importing comment controller
-import commentClassController from '../controllers/commentcontroller';
+import commentClassController from '../controllers/commentController';
 
 // importing router for questions
 const commentRouter = express.Router();

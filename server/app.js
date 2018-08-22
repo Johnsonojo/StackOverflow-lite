@@ -5,7 +5,7 @@ import bodyParser from 'body-parser';
 
 
 // importing the routes
-import routecontroller from './v1/routes/index';
+import routecontroller from './v1/routes';
 
 // Setup the express app
 const app = express();
@@ -22,10 +22,6 @@ app.use(routecontroller);
 
 const PORT = process.env.PORT || 8000;
 
-// app.listen(PORT, () => console.log(`listening on ${PORT}`));
-app.listen(PORT, () => {
-    console.log('server listening on ' + PORT);
-});
-
+app.listen(PORT, () => console.log(`listening on ${PORT}`));
 
 export default app;

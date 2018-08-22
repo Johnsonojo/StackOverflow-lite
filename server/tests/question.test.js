@@ -1,13 +1,13 @@
-import chaihhtp from 'chai-http';
+import chaiHttp from 'chai-http';
 import chai from 'chai';
 import server from '../app';
 
 const { expect } = chai;
 
-chai.use(chaihhtp);
+chai.use(chaiHttp);
 
 describe('Question controller', () => {
-    const newData = {
+    const newQuestion = {
         id: 4,
         title: 'what is HTMz?',
         body: 'I need an indepth explanation of what HTMz is',
@@ -17,12 +17,13 @@ describe('Question controller', () => {
     it('should create a question', (done) => {
         chai.request(server)
             .post('/api/v1/questions')
-            .send(newData)
+            .send(newQuestion)
             .end((err, res) => {
-                expect(res.body.output.id).to.be.eql(newData.id);
-                expect(res.body.output.title).to.be.eql(newData.title);
-                expect(res.body.output.body).to.be.eql(newData.body);
-                expect(res.body.output.answers).to.be.eql(newData.answers);
+                expect(res.status).to.equal(201);
+                expect(res.body.data.id).to.be.eql(newQuestion.id);
+                expect(res.body.data.title).to.be.eql(newQuestion.title);
+                expect(res.body.data.body).to.be.eql(newQuestion.body);
+                expect(res.body.data.answers).to.be.eql(newQuestion.answers);
                 done(err);
             });
     });
@@ -32,7 +33,10 @@ describe('Question controller', () => {
         chai.request(server)
             .get('/api/v1/questions')
             .end((err, res) => {
-                expect(res.body.questions.length).to.be.eql(4);
+                expect(res.status).to.equal(200);
+                expect(res.body.message).to.be.a('string');
+                expect(res.body.status).to.be.a('string');
+                expect(res.body.data.length).to.be.eql(4);
                 done(err);
             });
     });
@@ -47,11 +51,12 @@ describe('Question controller', () => {
                     title,
                     body,
                     answers,
-                } = newData;
-                expect(res.body.value.id).to.be.eql(id);
-                expect(res.body.value.title).to.be.eql(title);
-                expect(res.body.value.body).to.be.eql(body);
-                expect(res.body.value.answers).to.be.eql(answers);
+                } = newQuestion;
+                expect(res.status).to.equal(200);
+                expect(res.body.data.id).to.be.eql(id);
+                expect(res.body.data.title).to.be.eql(title);
+                expect(res.body.data.body).to.be.eql(body);
+                expect(res.body.data.answers).to.be.eql(answers);
                 done(err);
             });
     });
@@ -59,7 +64,7 @@ describe('Question controller', () => {
 
     // test for updating a question
     it('should update a question', (done) => {
-        const updatedData = {
+        const updateQuestion = {
             id: 3,
             title: 'what is HTMz?',
             body: 'I need an indepth explanation of what HTMz is',
@@ -67,11 +72,12 @@ describe('Question controller', () => {
         };
         chai.request(server)
             .put('/api/v1/questions/3')
-            .send(updatedData)
+            .send(updateQuestion)
             .end((err, res) => {
-                expect(res.body.question.id).to.be.eql(updatedData.id);
-                expect(res.body.question.title).to.be.eql(updatedData.title);
-                expect(res.body.question.body).to.be.eql(updatedData.body);
+                expect(res.status).to.equal(200);
+                expect(res.body.data.id).to.be.eql(updateQuestion.id);
+                expect(res.body.data.title).to.be.eql(updateQuestion.title);
+                expect(res.body.data.body).to.be.eql(updateQuestion.body);
                 done(err);
             });
     });
@@ -81,8 +87,10 @@ describe('Question controller', () => {
         chai.request(server)
             .delete('/api/v1/questions/2')
             .end((err, res) => {
-                expect(res.body.deleteOutput.id).to.be.eql(2);
+                expect(res.status).to.equal(200);
+                expect(res.body.status).to.be.eql('success');
+                expect(res.body.message).to.be.eql('Question 2 deleted');
                 done(err);
-            })
+            });
     });
 });

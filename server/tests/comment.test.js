@@ -1,10 +1,10 @@
-import chaihhtp from 'chai-http';
+import chaiHttp from 'chai-http';
 import chai from 'chai';
 import server from '../app';
 
 const { expect } = chai;
 
-chai.use(chaihhtp);
+chai.use(chaiHttp);
 
 
 describe('Comments controller', () => {
@@ -20,9 +20,9 @@ describe('Comments controller', () => {
             .post('/api/v1/questions/3/answers/1/comments')
             .send(newComment)
             .end((err, res) => {
-                expect(res.body.result.id).to.be.eql(newComment.id);
-                expect(res.body.result.userId).to.be.eql(newComment.userId);
-                expect(res.body.result.body).to.be.eql(newComment.body);
+                expect(res.body.data.id).to.be.eql(newComment.id);
+                expect(res.body.data.userId).to.be.eql(newComment.userId);
+                expect(res.body.data.body).to.be.eql(newComment.body);
                 done(err);
             });
     });
