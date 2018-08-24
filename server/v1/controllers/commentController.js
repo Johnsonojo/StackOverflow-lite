@@ -1,8 +1,17 @@
-/* import database */
 import questionDatabase from '../model/database';
 
+/**
+ * @description class for comments
+ */
+
 export default class Comment {
-    // Add a comment to an answer
+
+    /**
+     * @description creates a comment
+     * @param {object} req
+     * @param {object} res
+     * @return {object}
+     */
     static postOneComment(req, res) {
         const result = {
             status: 'failure',

@@ -1,8 +1,16 @@
-/* import database */
 import questionDatabase from '../model/database';
 
+/**
+ * @description class for Answers
+ */
 export default class Answer {
-    // Add an answer
+
+    /**
+     * @description creates an answer
+     * @param {object} req
+     * @param {object} res
+     * @return {object}
+     */
     static postAnswer(req, res) {
         const result = {
             status: 'failure',
@@ -33,6 +41,12 @@ export default class Answer {
         return result;
     }
 
+    /**
+     * @description gets all answers to a question
+     * @param {object} req
+     * @param {object} res
+     * @return {object}
+     */
     static getAllAnswersToAQuestion(req, res) {
         const result = {
             status: 'failure',
