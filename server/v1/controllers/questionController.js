@@ -1,8 +1,16 @@
-/* import database */
 import questionDatabase from '../model/database';
 
+/**
+ * @description A class for questions
+ */
 export default class Question {
-    // get all questions
+
+    /**
+     * @description gets all questions
+     * @param {object} req
+     * @param {object} res
+     * @return {object}
+     */
     static getAllQuestions(req, res) {
         return res.status(200).json({
             status: 'success',
@@ -11,7 +19,12 @@ export default class Question {
         });
     }
 
-    // get a question
+    /**
+     * @description gets a question
+     * @param {object} req
+     * @param {object} res
+     * @return {object}
+     */
     static getOneQuestion(req, res) {
         const result = {
             status: 'failure',
@@ -30,7 +43,12 @@ export default class Question {
         return result;
     }
 
-    // Creating a new question
+    /**
+     * @description creates a new question
+     * @param {object} req
+     * @param {object} res
+     * @return {object}
+     */
     static addNewQuestion(req, res) {
         // check parameters to create a question
         if (!req.body.title || !req.body.body) {
@@ -53,7 +71,12 @@ export default class Question {
         });
     }
 
-    // Deleting a question
+    /**
+     * @description deletes a question
+     * @param {object} req
+     * @param {object} res
+     * @return {object}
+     */
     static deleteOneQuestion(req, res) {
         const result = {
             message: 'Question not found',
@@ -71,9 +94,13 @@ export default class Question {
         return result;
     }
 
-    // Edit a question
+    /**
+     * @description updates a question
+     * @param {object} req
+     * @param {object} res
+     * @return {object}
+     */
     static editOneQuestion(req, res) {
-        // check the validity of the input
         const result = {
             status: 'failure',
             message: 'Question not found',
@@ -84,7 +111,6 @@ export default class Question {
                 message: 'Please supply title and body of the question',
             });
         }
-        // update the question using question id
         questionDatabase.questions.forEach((question) => {
             if (question.id === parseInt(req.params.questionId, 10)) {
                 questionDatabase.questions[req.params.questionId - 1].title = req.body.title;
