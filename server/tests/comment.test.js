@@ -20,6 +20,7 @@ describe('Comments controller', () => {
             .post('/api/v1/questions/3/answers/1/comments')
             .send(newComment)
             .end((err, res) => {
+                expect(res.status).to.equal(201);
                 expect(res.body.data.id).to.be.eql(newComment.id);
                 expect(res.body.data.userId).to.be.eql(newComment.userId);
                 expect(res.body.data.body).to.be.eql(newComment.body);

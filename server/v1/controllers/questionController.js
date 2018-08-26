@@ -1,4 +1,4 @@
-import questionDatabase from '../model/database';
+import questionDb from '../model/database';
 
 /**
  * @description A class for questions
@@ -15,7 +15,7 @@ export default class Question {
         return res.status(200).json({
             status: 'success',
             message: 'All question fetched',
-            data: questionDatabase.questions,
+            data: questionDb.questions,
         });
     }
 
@@ -26,21 +26,22 @@ export default class Question {
      * @return {object}
      */
     static getOneQuestion(req, res) {
-        const result = {
-            status: 'failure',
-            message: 'Question not found',
-        };
-        const { questionId } = req.params;
-        questionDatabase.questions.forEach((question) => {
-            if (question.id === parseInt(questionId, 10)) {
-                return res.status(200).json({
-                    status: 'success',
-                    message: `Question  ${question.id}  fetched`,
-                    data: question,
-                });
-            }
-        });
-        return result;
+        const questionId = parseInt(req.params.questionId, 10);
+
+        const result = questionDb.questions.find(question => question.id === questionId);
+
+        if (!result) {
+            res.status(404).json({
+                status: 'failure',
+                message: 'Question not found',
+            });
+        } else {
+            res.status(200).json({
+                status: 'success',
+                message: `Question  ${result.id}  fetched`,
+                data: result,
+            });
+        }
     }
 
     /**
@@ -50,24 +51,17 @@ export default class Question {
      * @return {object}
      */
     static addNewQuestion(req, res) {
-        // check parameters to create a question
-        if (!req.body.title || !req.body.body) {
-            return res.status(400).json({
-                status: 'failure',
-                message: 'Please fill all field',
-            });
-        }
         const newQuestion = {
-            id: questionDatabase.questions.length + 1,
+            id: questionDb.questions.length + 1,
             title: req.body.title,
             body: req.body.body,
             answers: [],
         };
-        questionDatabase.questions.push(newQuestion);
+        questionDb.questions.push(newQuestion);
         return res.status(201).json({
             status: 'success',
             message: 'New question was created',
-            data: questionDatabase.questions[questionDatabase.questions.length - 1],
+            data: questionDb.questions[questionDb.questions.length - 1],
         });
     }
 
@@ -78,20 +72,22 @@ export default class Question {
      * @return {object}
      */
     static deleteOneQuestion(req, res) {
-        const result = {
-            message: 'Question not found',
-            status: 'failure',
-        };
-        questionDatabase.questions.forEach((question) => {
-            if (question.id === parseInt(req.params.questionId, 10)) {
-                questionDatabase.questions.splice(question.id, 1);
-                res.status(200).json({
-                    status: 'success',
-                    message: `Question ${question.id} deleted`,
-                });
-            }
-        });
-        return result;
+        const questionId = parseInt(req.params.questionId, 10);
+
+        const result = questionDb.questions.find(question => question.id === questionId);
+
+        if (!result) {
+            res.status(404).json({
+                status: 'failure',
+                message: 'Question not found',
+            });
+        } else {
+            questionDb.questions.splice(questionDb.questions.indexOf(result), 1);
+            res.status(200).json({
+                status: 'success',
+                message: `Question ${result.id} deleted`,
+            });
+        }
     }
 
     /**
@@ -101,27 +97,24 @@ export default class Question {
      * @return {object}
      */
     static editOneQuestion(req, res) {
-        const result = {
-            status: 'failure',
-            message: 'Question not found',
-        };
-        if (!req.body.title || !req.body.body) {
-            return res.json({
+        const questionId = parseInt(req.params.questionId, 10);
+
+        const result = questionDb.questions.find(question => question.id === questionId);
+
+        if (!result) {
+            res.status(404).json({
                 status: 'failure',
-                message: 'Please supply title and body of the question',
+                message: 'Question not found',
             });
+        } else {
+            questionDb.questions[req.params.questionId - 1].title = req.body.title;
+            questionDb.questions[req.params.questionId - 1].body = req.body.body;
+            return res.status(200).json({
+                message: `Question ${result.id} updated`,
+                status: 'success',
+                data: questionDb.questions[req.params.questionId - 1],
+            });
+
         }
-        questionDatabase.questions.forEach((question) => {
-            if (question.id === parseInt(req.params.questionId, 10)) {
-                questionDatabase.questions[req.params.questionId - 1].title = req.body.title;
-                questionDatabase.questions[req.params.questionId - 1].body = req.body.body;
-                return res.status(200).json({
-                    message: `Question ${question.id} updated`,
-                    status: 'success',
-                    data: questionDatabase.questions[req.params.questionId - 1],
-                });
-            }
-        });
-        return result;
     }
 }

@@ -19,6 +19,7 @@ describe('Answers controller', () => {
             .post('/api/v1/questions/3/answers')
             .send(newAnswer)
             .end((err, res) => {
+                expect(res.status).to.equal(201);
                 expect(res.body.data.id).to.be.eql(newAnswer.id);
                 expect(res.body.data.userId).to.be.eql(newAnswer.userId);
                 expect(res.body.data.body).to.be.eql(newAnswer.body);
@@ -33,9 +34,9 @@ describe('Answers controller', () => {
         chai.request(server)
             .get('/api/v1/questions/3/answers')
             .end((err, res) => {
+                expect(res.status).to.equal(200);
                 expect(res.body.data.length).to.be.eql(3);
                 done(err);
             });
     });
-
 });
