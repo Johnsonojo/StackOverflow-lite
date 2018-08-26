@@ -1,4 +1,4 @@
-import questionDatabase from '../model/database';
+import questionDb from '../model/database';
 
 /**
  * @description class for Answers
@@ -12,33 +12,27 @@ export default class Answer {
      * @return {object}
      */
     static postAnswer(req, res) {
-        const result = {
-            status: 'failure',
-            message: 'question not found',
-        };
-        const { questionId, userId } = req.params;
-        if (!req.body.body) {
-            return res.json({
+        const questionId = parseInt(req.params.questionId, 10);
+
+        const result = questionDb.questions.find(question => question.id === questionId);
+        if (!result) {
+            res.status(404).json({
                 status: 'failure',
-                message: 'Please fill all field',
+                message: 'Question not found',
+            });
+        } else {
+            result.answers.push({
+                id: result.answers.length + 1,
+                userId: req.body.userId,
+                body: req.body.body,
+                comment: [],
+            });
+            return res.status(201).json({
+                status: 'success',
+                message: 'New answer was added',
+                data: result.answers[result.answers.length - 1],
             });
         }
-        questionDatabase.questions.forEach((question) => {
-            if (question.id === parseInt(questionId, 10)) {
-                question.answers.push({
-                    id: question.answers.length + 1,
-                    userId: req.body.userId,
-                    body: req.body.body,
-                    comment: [],
-                });
-                return res.status(200).json({
-                    status: 'success',
-                    message: 'New answer was added',
-                    data: question.answers[question.answers.length - 1],
-                });
-            }
-        });
-        return result;
     }
 
     /**
@@ -48,20 +42,14 @@ export default class Answer {
      * @return {object}
      */
     static getAllAnswersToAQuestion(req, res) {
-        const result = {
-            status: 'failure',
-            message: 'question not found',
-        };
-        const { questionId } = req.params;
-        questionDatabase.questions.forEach((question) => {
-            if (question.id === parseInt(questionId, 10)) {
-                return res.status(200).json({
-                    status: 'success',
-                    message: 'All answers fetched',
-                    data: question.answers,
-                });
-            }
+
+        const questionId = parseInt(req.params.questionId, 10);
+
+        const result = questionDb.questions.find(question => question.id === questionId);
+        return res.status(200).json({
+            status: 'success',
+            message: 'All answers fetched',
+            data: result.answers,
         });
-        return result;
     }
 }

@@ -1,11 +1,10 @@
-import questionDatabase from '../model/database';
+import questionDb from '../model/database';
 
 /**
  * @description class for comments
  */
 
 export default class Comment {
-
     /**
      * @description creates a comment
      * @param {object} req
@@ -13,35 +12,33 @@ export default class Comment {
      * @return {object}
      */
     static postOneComment(req, res) {
-        const result = {
-            status: 'failure',
-            message: 'question not found',
-        };
-        const { questionId, answerId } = req.params;
-        if (!req.body.body || !req.body.userId) {
-            return res.json({
+        const questionId = parseInt(req.params.questionId, 10);
+        const answerId = parseInt(req.params.answerId, 10);
+
+        const result = questionDb.questions.find(question => question.id === questionId);
+        if (!result) {
+            res.status(404).json({
                 status: 'failure',
-                message: 'Please fill all field',
+                message: 'Question not found',
             });
         }
-        questionDatabase.questions.forEach((question) => {
-            if (question.id === parseInt(questionId, 10)) {
-                question.answers.forEach((answer) => {
-                    if (answer.id === parseInt(answerId, 10)) {
-                        answer.comment.push({
-                            id: answer.comment.length + 1,
-                            userId: req.body.userId,
-                            body: req.body.body,
-                        });
-                        return res.status(200).json({
-                            status: 'success',
-                            message: 'New comment was added',
-                            data: answer.comment[answer.comment.length - 1],
-                        });
-                    }
-                });
-            }
-        });
-        return result;
+        const answerResult = result.answers.find(answers => answers.id === answerId);
+        if (!answerResult) {
+            res.status(404).json({
+                status: 'failure',
+                message: 'Answer not found',
+            });
+        } else {
+            answerResult.comment.push({
+                id: answerResult.comment.length + 1,
+                userId: req.body.userId,
+                body: req.body.body,
+            });
+            return res.status(201).json({
+                status: 'success',
+                message: 'New comment was added',
+                data: answerResult.comment[answerResult.comment.length - 1],
+            });
+        }
     }
 }

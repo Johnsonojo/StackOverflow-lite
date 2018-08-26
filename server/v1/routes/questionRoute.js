@@ -1,5 +1,6 @@
 // importing express library
 import express from 'express';
+import validator from '../middleware/validator';
 
 // importing question controller
 import questionClassController from '../controllers/questionController';
@@ -10,12 +11,12 @@ const questionRouter = express.Router();
 
 questionRouter.get('/', questionClassController.getAllQuestions);
 
-questionRouter.get('/:questionId', questionClassController.getOneQuestion);
+questionRouter.get('/:questionId', validator.checkQuestionId, questionClassController.getOneQuestion);
 
-questionRouter.post('/', questionClassController.addNewQuestion);
+questionRouter.post('/', validator.checkQuestionBody, questionClassController.addNewQuestion);
 
-questionRouter.delete('/:questionId', questionClassController.deleteOneQuestion);
+questionRouter.delete('/:questionId', validator.checkQuestionId, questionClassController.deleteOneQuestion);
 
-questionRouter.put('/:questionId', questionClassController.editOneQuestion);
+questionRouter.put('/:questionId', validator.checkQuestionBody, questionClassController.editOneQuestion);
 
 export default questionRouter;

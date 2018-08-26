@@ -2,6 +2,7 @@
 import express from 'express';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
+import validation from 'express-validator';
 
 
 // importing the routes
@@ -16,6 +17,8 @@ app.use(logger('dev'));
 // body-parser configuration
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(validation());
 
 // configuring the question route
 app.use(routecontroller);
